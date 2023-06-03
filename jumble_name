@@ -1,0 +1,11 @@
+
+ select id, case when newcol='Even' then LAG(student) OVER (ORDER BY id)
+ else
+ student
+ end  as student
+  from (select  
+case when  Mod(count(*),2) = 1 then 'odd'
+else 
+'Even'
+End as newcol
+ from seat ) as T , 
